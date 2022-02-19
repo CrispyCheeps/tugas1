@@ -2,7 +2,6 @@ package tools.menu.employee;
 
 import daos.EmployeeDAO;
 import models.Employee;
-import models.Location;
 import tools.DbConnection;
 import java.util.Scanner;
 
@@ -40,11 +39,11 @@ public class MenuEmployee {
                 break;
 
             case 3:
-                updateLoc();
+                updateEmployee();
                 break;
 
             case 4:
-                deleteLoc();
+                deleteEmployee();
                 break;
         }
     }
@@ -59,7 +58,7 @@ public class MenuEmployee {
 
         Scanner myObj = new Scanner(System.in);
         Scanner myObj2 = new Scanner(System.in);
-        Scanner myObj2 = new Scanner(System.in);
+        Scanner myObj3 = new Scanner(System.in);
         System.out.print("Insert an ID: ");
         int id = myObj.nextInt();
         System.out.print("Insert first name : ");
@@ -72,19 +71,84 @@ public class MenuEmployee {
         String noTelp = myObj2.nextLine();
         System.out.print("Insert hire date : ");
         String hireDate = myObj2.nextLine();
-        System.out.println("Insert ");
+        System.out.println("Insert the job code: ");
+        String jobCode = myObj2.nextLine();
+        System.out.print("Insert salary : ");
+        Double salary = myObj3.nextDouble();
+        System.out.print("Insert the comission : ");
+        Double comission = myObj3.nextDouble();
+        System.out.print("Insert the manager code : ");
+        int manager = myObj.nextInt();
+        System.out.print("Insert department code : ");
+        int department = myObj.nextInt();
 
         try {
-            Location loc = new Location(id, alamat, kodePos, city, provinsi, country);
-            boolean hasil = ldao.insert(loc);
+            Employee emp = new Employee(id, fName, lName, email, noTelp, hireDate, jobCode, salary,
+                    comission, manager, department);
+            boolean hasil = edao.insert(emp);
             //dikasih if == true buat ngecek validasi
             if(hasil) {
                 System.out.println("\n\nSuccessfully inserted a new location");
-                System.out.println("Inserted data : \n" + loc.toString());
+                System.out.println("Inserted data : \n" + emp.toString());
             }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
 
         }
     }
+
+    public static void updateEmployee(){
+        Scanner myObj = new Scanner(System.in);
+        Scanner myObj2 = new Scanner(System.in);
+        Scanner myObj3 = new Scanner(System.in);
+
+        System.out.print("\n\nInput Id you want to update : ");
+        int id = myObj.nextInt();
+        System.out.println("Original Data: ");
+        System.out.println(edao.getById(id).toString());
+
+        System.out.print("Insert first name : ");
+        String fName = myObj2.nextLine();
+        System.out.print("Insert last name : ");
+        String lName = myObj2.nextLine();
+        System.out.print("Insert phone number : ");
+        String noTelp = myObj2.nextLine();
+        System.out.print("Insert hire date : ");
+        String hireDate = myObj2.nextLine();
+        System.out.println("Insert salary : ");
+        Double salary = myObj3.nextDouble();
+        System.out.println("Insert the comission : ");
+        Double comission = myObj3.nextDouble();
+
+        try {
+            Employee emp = new Employee(id, fName, lName, edao.getById(id).getEmail(),
+                    noTelp, hireDate, edao.getById(id).getJob(), salary,
+                    comission, edao.getById(id).getManager(), edao.getById(id).getDepartment());
+            boolean hasil = edao.update(emp);
+            if (hasil) {
+                System.out.println("\n\nSuccessfully updated an employee record");
+                System.out.println("Updated data : ");
+                System.out.println(emp.toString());
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public static void deleteEmployee() {
+        Scanner myObj = new Scanner(System.in);
+        System.out.print("\n\nInput Id you want to delete : ");
+        int deletedRecord = myObj.nextInt();
+        System.out.println("The Data with ID(" + deletedRecord + ") : ");
+        System.out.println(edao.getById(deletedRecord).toString());
+        try {
+            boolean hasil = edao.delete(deletedRecord);
+            if (hasil) {
+                System.out.println("\n\nSuccessfully deleted an employee record");
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
 }

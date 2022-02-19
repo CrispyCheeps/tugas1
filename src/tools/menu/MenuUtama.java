@@ -2,6 +2,7 @@ package tools.menu;
 
 import tools.menu.country.MenuCountry;
 import tools.menu.department.MenuDepartment;
+import tools.menu.employee.MenuEmployee;
 import tools.menu.job.MenuJob;
 import tools.menu.location.MenuLocation;
 import tools.menu.region.MenuRegion;
@@ -71,6 +72,16 @@ public class MenuUtama {
                 ClearConsole();
                 MenuJob pil5 = new MenuJob();
                 pil5.checkConnection();
+                break;
+
+            case 6:
+                ClearConsole();
+                MenuEmployee pil6 = new MenuEmployee();
+                pil6.checkConnection();
+                break;
+
+            default:
+                System.out.println("Invalid input code");
         }
 
     }
