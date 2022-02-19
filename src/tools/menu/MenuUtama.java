@@ -1,6 +1,7 @@
 package tools.menu;
 
 import tools.menu.country.MenuCountry;
+import tools.menu.department.MenuDepartment;
 import tools.menu.job.MenuJob;
 import tools.menu.location.MenuLocation;
 import tools.menu.region.MenuRegion;
@@ -62,8 +63,8 @@ public class MenuUtama {
 
             case 4 :
                 ClearConsole();
-//                MenuJob pil4 = new MenuJob();
-//                pil4.checkConnection();
+                MenuDepartment pil4 = new MenuDepartment();
+                pil4.checkConnection();
                 break;
 
             case 5:

@@ -43,10 +43,10 @@ public class DepartmentDAO {
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Department(id, name," +
                     "manager, location) VALUES(?,?,?,?)");
             //code below subtitues the parameterized query in line 44
-            pstmt.setString(1, department.getId());
+            pstmt.setInt(1, department.getId());
             pstmt.setString(2, department.getName());
-            pstmt.setDouble(3, department.getManager());
-            pstmt.setDouble(4, department.getLocation());
+            pstmt.setInt(3, department.getManager());
+            pstmt.setInt(4, department.getLocation());
             pstmt.execute();
             return true;
         } catch (SQLException e) {
@@ -73,7 +73,7 @@ public class DepartmentDAO {
     public boolean delete(int id) {
         try {
             PreparedStatement pstmt = conn.prepareStatement("DELETE FROM department WHERE id=?");
-            pstmt.setString(1, id);
+            pstmt.setInt(1, id);
             pstmt.executeUpdate(); //used for DML command (insert,update, delete)
             return true;
         } catch (SQLException e) {
@@ -86,7 +86,7 @@ public class DepartmentDAO {
         Department department = new Department();
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM department WHERE ID = ?");
-            pstmt.setString(1, id);
+            pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 department.setId(rs.getInt(1));
