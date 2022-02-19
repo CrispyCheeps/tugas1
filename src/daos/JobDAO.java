@@ -65,6 +65,7 @@ public class JobDAO {
             pstmt.setDouble(4, job.getMaxSalary());
             pstmt.setString(5, currId);
             pstmt.execute();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -59,6 +59,7 @@ public class RegionDAO {
             pstmt.setString(1, region.getRegionName());
             pstmt.setInt(2, region.getRegionId());
             pstmt.execute();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }

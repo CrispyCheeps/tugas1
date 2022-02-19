@@ -86,18 +86,20 @@ public class MenuJob {
         Scanner myObj2 = new Scanner(System.in);
         System.out.print("\n\nInput Id you want to update : ");
         String jobId = myObj.nextLine();
+        System.out.println("Original Data: ");
+        System.out.println(jdao.getById(jobId).toString());
         System.out.print("Insert job id : ");
         String newId = myObj.nextLine();
         System.out.print("Insert job title : ");
         String jobTitle = myObj.nextLine();
         System.out.print("Insert minimum salary : ");
         Double minSalary = myObj2.nextDouble();
-        System.out.println("Insert maximum salary : ");
+        System.out.print("Insert maximum salary : ");
         Double maxSalary = myObj2.nextDouble();
         try {
             Job job = new Job(newId, jobTitle, minSalary, maxSalary);
             boolean hasil = jdao.update(job, jobId);
-            if (hasil==true) { //if(hasil) adalah simplify dari if (hasil == true)
+            if (hasil == true) { //if(hasil) adalah simplify dari if (hasil == true)
                 System.out.println("\n\nSuccessfully updated a job record");
                 System.out.println("Updated data : ");
                 System.out.println(job.toString());
