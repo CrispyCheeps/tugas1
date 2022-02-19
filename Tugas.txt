@@ -1,0 +1,29 @@
+[Tugas 7] EXAM JDBC (INDIVIDU) @MCC-REG-63-JAVA @MBKM-2-JAVA 
+
+Buat repo,
+kirim ke email : devid.bardin@mii.co.id
+Deadline : Sabtu, 19 Feb 2022 pukul 11.59.
+
+
+tampilan dalam bentuk console.
+Buatlah CRUD 6 table dengan menu
+1. Region
+2. Country
+3. Location
+4. Department
+5. Job
+6. Employee
+
+Ada fungsi
+1. Show (GetAll)
+2. Insert
+3. Update
+4. Delete
+
+Saat hendak melakukan update, tampilkan dahulu data lama (gunakan GetById)
+
+Boleh auto increment
+kasih validasi (berhasil maupun gagal)
+dan scanner (buat input)
+
+jgn diubah yg ada didatabase (yg allow null kembalikno!)
