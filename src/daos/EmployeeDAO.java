@@ -78,7 +78,7 @@ public class EmployeeDAO {
                             ", hire_date=?, salary=?, comission_pct=? WHERE id=?"
             );
             pstmt.setString(1, emp.getfName());
-            pstmt.setString(2, emp.getfName());
+            pstmt.setString(2, emp.getlName());
             pstmt.setString(3, emp.getNoTelp());
             pstmt.setString(4, emp.getHireDate());
             pstmt.setDouble(5, emp.getSalary());
